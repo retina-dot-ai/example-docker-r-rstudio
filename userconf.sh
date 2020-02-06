@@ -25,13 +25,6 @@ fi
 if grep --quiet "auth-none=1" /etc/rstudio/rserver.conf
 then
 	echo "Skipping authentication as requested"
-elif [ "$PASSWORD" == "rstudio" ]
-then
-    printf "\n\n"
-    printf "\e[31mERROR\e[39m: You must set a unique PASSWORD (not 'rstudio') first! e.g. run with:\n"
-    printf "docker run -e PASSWORD=\e[92m<YOUR_PASS>\e[39m -p 8787:8787 retina/example-docker-r-rstudio:latest\n"
-    printf "\n\n"
-    exit 1
 fi
 
 if [ "$USERID" -lt 1000 ]
